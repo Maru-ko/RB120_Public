@@ -11,7 +11,7 @@ class Account
   end
 
   def withdraw(pin_number, amount)
-    if pin_number == pin
+    if pin_number == pin  
       @balance  -= amount
       puts "Withdrew #{amount}. New Balance: $#{@balance}."
     else
