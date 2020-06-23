@@ -109,6 +109,7 @@ module GameStructure
 
   def clarify_get_name_reset
     puts "Allright, let's try again..."
+    centered('please wait...')
     obtain_ready_screen_reset
   end
 
@@ -251,7 +252,7 @@ class Human < Player
       centered("The computer has chosen [#{move}] for #{name}!")
     end
     centered("Please wait...")
-    sleep 1.5
+    sleep 1
   end
 
   def pre_choose
@@ -321,7 +322,7 @@ class Opponent < Player
     centered("#{s_name} has chosen [#{move}]")
     yml_out('block_line')
     centered('please wait...')
-    sleep 3
+    sleep 3.5
   end
 end
 
@@ -331,7 +332,9 @@ class Rajesh < Opponent
   end
 
   def choose(_human_moves)
-    pick = (Move::VALUES.sample(rand(4))).sample
+    cinnamon = [1, 2, 3, 4].sample
+    moves = Move::VALUES.sample(cinnamon)
+    pick = moves.sample
     self.move = Move.new(pick)
     wrap_up_move
   end
